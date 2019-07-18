@@ -2,7 +2,7 @@ Option +FollowSymLinks
 Option -Indexes
 DirectoryIndex index.hmtl index.php
 RewriteEngine on
-RewriteCond $1 ! (index\.php|images|robots\.txt)
+RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule (.*)$ /sistemabiblioteca/index.php/$1 [l,QSA]
+RewriteRule ^(.*)$ /sistemabiblioteca/index.php/$1 [l,QSA]
