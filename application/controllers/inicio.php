@@ -9,5 +9,11 @@ public function cargarpagina()
 {
     $this->loadView('/form/dashboard');
 }
+public function login()
+	{
+		$this->load->view('login');
+	}
+	
+
 
 }
