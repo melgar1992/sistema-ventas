@@ -1,17 +1,22 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class inicio extends BaseController {
     
     function __construct(){
 		parent::__construct();			
     }    
 
-public function cargarpagina()
-{
-    $this->loadView('/form/dashboard');
-}
-public function login()
+
+public function index()
 	{
-		$this->load->view('login');
+		if ($this->session->userdata('login')) {
+			redirect(base_url().'Dashboard');
+		}
+		else {
+			$this->load->view('login');
+		}
+		
 	}
 	
 

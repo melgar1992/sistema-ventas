@@ -1,5 +1,10 @@
 
 <!DOCTYPE html>
+<?php
+if (!$this->session->userdata('login')) {
+    redirect(base_url());
+}
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -53,13 +58,13 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <span class="hidden-xs"><?php echo $this->session->userdata('nombres') ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-body">
                                     <div class="row">
                                         <div class="col-xs-12 text-center">
-                                            <a href="#"> Cerrar Sesión</a>
+                                            <a href="<?php echo base_url();?>BaseController/logout"> Cerrar Sesión</a>
                                         </div>
                                     </div>
                                     <!-- /.row -->
