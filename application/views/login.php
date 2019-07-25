@@ -34,13 +34,13 @@
   <div class="login-box-body">
     <p class="login-box-msg">Introduzca sus datos de sesion</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="<?php echo base_url(); ?>BaseController/login_process" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="text" class="form-control" placeholder="Usuario" name="username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="contraseña" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

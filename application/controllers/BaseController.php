@@ -3,7 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseController extends CI_Controller { 
     function __construct(){
-		parent::__construct();		
+		parent::__construct();	
+	
+	
     }
 
   
@@ -13,6 +15,35 @@ class BaseController extends CI_Controller {
 		$this->load->view('template/sidebar_menu');
 		$this->load->view($url);
 		$this->load->view('template/footer');
+	}
+	public function login_process()
+	{
+		$username = $this->input->post("username");
+		$password = $this->input->post("password");
+
+		$res = $this->Usuario_model->login($username,sha1($password));
+
+		if (!$res) {
+			redirect(base_url());
+		} else {
+			
+			$data = array(
+				'id_usuarios' =>$res->id_usuarios ,
+				'nombres' =>$res->nombres ,
+				'id_roles' =>$res->id_roles ,
+				'login' =>true ,
+			 );
+
+			 $this->session->set_userdata($data);
+			 redirect(base_url().'Dashboard');
+			
+		}
+		
+	}
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect(base_url());
 	}
 
 
