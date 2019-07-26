@@ -9,11 +9,11 @@ class BaseController extends CI_Controller {
     }
 
   
-    public function loadView($url){
+    public function loadView($url,$data){
 		
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar_menu');
-		$this->load->view($url);
+		$this->load->view($url,$data);
 		$this->load->view('template/footer');
 	}
 	public function login_process()
