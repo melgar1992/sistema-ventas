@@ -8,8 +8,9 @@ class Dashboard extends BaseController {
     }    
 
 public function index()
-{
+{ 
+  $datos['datos']='';
 
-    $this->loadView('/form/dashboard','');
+    $this->loadView('','/form/dashboard',$datos);
 }
 }

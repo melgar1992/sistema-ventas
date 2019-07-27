@@ -29,5 +29,16 @@
     $('.sidebar-menu').tree()
   })
 </script>
+
+<!--Formulario de la pagina -->
+<?php
+if (isset($pagina)) {?>
+  <script src="<?php echo base_url();?>application/JavaScript"<?php echo $pagina ?>></script>;
+<?php 
+}
+
+?>
+
+
 </body>
 </html>

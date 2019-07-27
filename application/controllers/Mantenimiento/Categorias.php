@@ -13,7 +13,7 @@ public function index()
         'categorias' => $this->Categorias_model->getCategorias(),
     );
     
-    $this->loadView('/form/admin/categorias/list',$data);
+    $this->loadView('Categorias','/form/admin/categorias/list',$data);
     
 }
 }

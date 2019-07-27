@@ -6,11 +6,7 @@
              Categorias
              <small>Listado</small>
          </h1>
-         <ol class="breadcrumb">
-             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-             <li><a href="#">Examples</a></li>
-             <li class="active">Blank page</li>
-         </ol>
+         
      </section>
 
      <!-- Main content -->
@@ -29,15 +25,39 @@
                  </div>
              </div>
              <div class="box-body">
-                 <div class="row">
-                     <div class="col-md-12">
-                         <a href="#" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span>Agregar Categoria</a>
+                 <form method="post" id="categorias" class="form-horizontal form-label-left">
+                     <div class="form-group">
+                         <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <input type="text" id=nombre required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre de la Categoria">
+
+                         </div>
                      </div>
-                 </div>
+                     <div class="form-group">
+                         <label for="descripcion" class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion <span class="required">*</span></label>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <input type="text" id="descripcion" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba una descripcion breve">
+
+                         </div>
+                     </div>
+
+
+
+                     <div class="form-group">
+
+                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                             <button class="btn btn-primary btn-flat" type="reset">Borrar</button> 
+                             <button class="btn btn-success">Guardar</button> 
+                            
+                         </div>
+                     </div>
+
+                 </form>
+
                  <hr>
                  <div class="row">
                      <div class="col-md-12">
-                         <table id="example1"class="table table-bordered btn-hover">
+                         <table id="example1" class="table table-bordered btn-hover">
                              <thead>
                                  <tr>
                                      <th>#</th>
@@ -47,23 +67,23 @@
                                  </tr>
                              </thead>
                              <tbody>
-                                 <?php if(!empty($categorias)): ?>
-                                 <?php foreach($categorias as $categoria):?>
-                                
-                                 <tr>
-                                     <td><?php echo $categoria->id_categorias;?></td>
-                                     <td><?php echo $categoria->nombre;?></td>
-                                     <td><?php echo $categoria->descripcion;?></td>
-                                     <td>
-                                         <div class="btn-group">
-                                             <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a>
-                                             <a href="#" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                             <a href="#" class="btn btn-danger"><span class="fa fa-remove"></span></a>
-                                         </div>
-                                     </td>
-                                 </tr>
-                                <?php endforeach;?>
-                                <?php endif; ?>
+                                 <?php if (!empty($categorias)) : ?>
+                                     <?php foreach ($categorias as $categoria) : ?>
+
+                                         <tr>
+                                             <td><?php echo $categoria->id_categorias; ?></td>
+                                             <td><?php echo $categoria->nombre; ?></td>
+                                             <td><?php echo $categoria->descripcion; ?></td>
+                                             <td>
+                                                 <div class="btn-group">
+                                                     <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a>
+                                                     <a href="#" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                     <a href="#" class="btn btn-danger"><span class="fa fa-remove"></span></a>
+                                                 </div>
+                                             </td>
+                                         </tr>
+                                     <?php endforeach; ?>
+                                 <?php endif; ?>
 
                              </tbody>
                          </table>
