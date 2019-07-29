@@ -33,7 +33,7 @@
 <!--Formulario de la pagina -->
 <?php
 if (isset($pagina)) {?>
-  <script src="<?php echo base_url();?>application/JavaScript"<?php echo $pagina ?>></script>;
+  <script type="text/javascript" src="<?php echo base_url();?>assets/JavaScript/Js<?php echo $pagina;?>.js"></script>;
 <?php 
 }
 
