@@ -1,5 +1,4 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Categorias extends BaseController {
     
@@ -15,5 +14,16 @@ public function index()
     
     $this->loadView('Categorias','/form/admin/categorias/list',$data);
     
+}
+public function guardarCategoria()
+{
+    $nombre = $this->input->post("nombres");
+    $descripcion = $this->input->post("descripcion");
+
+    $respuesta = array(
+        'nombre' => $nombre,
+        'descripcion' => $descripcion
+    );
+    echo json_encode($respuesta);
 }
 }
