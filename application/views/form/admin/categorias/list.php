@@ -25,6 +25,16 @@
                  </div>
              </div>
              <div class="box-body">
+                 
+                     <?php if ($this->session->flashdata("error")): ?>
+                     <div class="alert alert-danger alert-dismissable">
+                         <button type="button" class="close" data-dissmiss="alert" aria-hidden="true">$times;</button>
+                         <p><i class="icon fa fa-ban"></i><?php echo $this->session->flashdata("error");?></p>
+
+                     </div>
+                    <?php endif;?>
+
+                
                  <form method="POST" action="<?php echo base_url();?>Mantenimiento/Categorias/guardarCategoria" id="categorias" class="form-horizontal form-label-left">
                      <div class="form-group">
                          <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
@@ -76,8 +86,8 @@
                                              <td><?php echo $categoria->descripcion; ?></td>
                                              <td>
                                                  <div class="btn-group">
-                                                     <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a>
-                                                     <a href="#" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                     <a href="" class="btn btn-info"><span class="fa fa-eye"></span></a>
+                                                     <a href="<?php echo base_url()?>Mantenimiento/Categorias/editar/<?php echo $categoria->id_categorias;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
                                                      <a href="#" class="btn btn-danger"><span class="fa fa-remove"></span></a>
                                                  </div>
                                              </td>
