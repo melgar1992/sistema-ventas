@@ -25,18 +25,18 @@
                  </div>
              </div>
              <div class="box-body">
-                 <form method="post" id="categorias" class="form-horizontal form-label-left">
+                 <form method="POST" action="<?php echo base_url();?>Mantenimiento/Categorias/guardarCategoria" id="categorias" class="form-horizontal form-label-left">
                      <div class="form-group">
                          <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" id=nombre required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre de la Categoria">
+                             <input type="text" name="nombre" id=nombre required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre de la Categoria">
 
                          </div>
                      </div>
                      <div class="form-group">
                          <label for="descripcion" class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" id="descripcion" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba una descripcion breve">
+                             <input type="text" name="descripcion" id="descripcion" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba una descripcion breve">
 
                          </div>
                      </div>

@@ -12,18 +12,14 @@ public function index()
         'categorias' => $this->Categorias_model->getCategorias(),
     );
     
-    $this->loadView('Categorias','/form/admin/categorias/list',$data);
+    $this->loadView('/form/admin/categorias/list',$data);
     
 }
 public function guardarCategoria()
 {
-    $nombre = $this->input->post("nombres");
+    $nombre = $this->input->post("nombre");
     $descripcion = $this->input->post("descripcion");
 
-    $respuesta = array(
-        'nombre' => $nombre,
-        'descripcion' => $descripcion
-    );
-    echo json_encode($respuesta);
+    echo $nombre. " ".$descripcion;
 }
 }
