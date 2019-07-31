@@ -47,7 +47,7 @@
                      <div class="form-group">
                          <label for="descripcion" class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="descripcion" id="descripcion" value="<?php echo $categoria->descripcion ?> required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba una descripcion breve">
+                             <input type="text" name="descripcion" id="descripcion" value="<?php echo $categoria->descripcion ?>" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba una descripcion breve">
 
                          </div>
                      </div>
@@ -57,7 +57,7 @@
                      <div class="form-group">
 
                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                             <button class="btn btn-primary btn-flat" type="reset">Borrar</button> 
+                             <a class="btn btn-primary btn-flat" href="<?php echo site_url("Mantenimiento/Categorias")?>" type="button">Volver</a>
                              <button type="submit" id="guardar" class="btn btn-success">Guardar</button> 
                             
                          </div>

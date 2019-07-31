@@ -14,7 +14,7 @@ class Categorias extends BaseController
             'categorias' => $this->Categorias_model->getCategorias(),
         );
 
-        $this->loadView('/form/admin/categorias/list', $data);
+        $this->loadView('Categorias','/form/admin/categorias/list', $data);
     }
     public function guardarCategoria()
     {
@@ -39,7 +39,7 @@ class Categorias extends BaseController
         $data = array(
             'categoria' => $this->Categorias_model->getCategoria($id_categorias),
         );
-        $this->loadView('/form/admin/categorias/editar', $data);
+        $this->loadView('Categorias','/form/admin/categorias/editar', $data);
     }
     public function actualizarCategoria()
     {
@@ -52,7 +52,7 @@ class Categorias extends BaseController
             'estado' => "1"
         );
         
-        if ($this->Categoria_model->actualizar($id_categoria, $data)) {
+        if ($this->Categorias_model->actualizar($id_categoria, $data)) {
             redirect(base_url() . "Mantenimiento/categorias");
         }
         else{
