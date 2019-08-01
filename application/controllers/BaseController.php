@@ -10,6 +10,7 @@ class BaseController extends CI_Controller {
 
   
     public function loadView($pagina,$url,$data=[]){
+		
 		$data['pagina']= $pagina;
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar_menu');

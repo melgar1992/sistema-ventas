@@ -67,6 +67,7 @@ class Categorias extends BaseController
             'categoria' => $this->Categorias_model->getCategoria($id_categorias),
 
         );
-        $this->loadView('/form/admin/categorias/vista', $data);
+        
+        $this->load->view("/form/admin/categorias/vista",$data);
     }
 }

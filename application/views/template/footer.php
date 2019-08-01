@@ -23,29 +23,10 @@
 <!-- DataTables-->
 <script src="<?php echo base_url(); ?>assets/template/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<input type="hidden" value="<?php echo base_url() ?>" id="base_url">
 <script>
-  $(document).ready(function() {
-    var base_url = "<?php echo base_url(); ?>";
-    $("btn-vista").on("click", function() {
-      var id_categorias = $(this).val();
-      $.ajax({
-        url: base_url + "Mantenimiento/Categorias/vista" + id_categorias,
-        type : "POST",
-        success: function(resp) {
-          alert(resp);
-        }
-
-
-
-
-      });
-
-
-    });
-    $('#example1').DataTable();
-    $('.sidebar-menu').tree()
-
-  })
+  $('#example1').DataTable();
+    $('.sidebar-menu').tree();
 </script>
 
 <!--Formulario de la pagina -->

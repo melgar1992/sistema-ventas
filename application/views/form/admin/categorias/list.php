@@ -6,7 +6,7 @@
              Categorias
              <small>Listado</small>
          </h1>
-         
+
      </section>
 
      <!-- Main content -->
@@ -25,17 +25,17 @@
                  </div>
              </div>
              <div class="box-body">
-                 
-                     <?php if ($this->session->flashdata("error")): ?>
+
+                 <?php if ($this->session->flashdata("error")) : ?>
                      <div class="alert alert-danger alert-dismissable">
                          <button type="button" class="close" data-dissmiss="alert" aria-hidden="true">$times;</button>
-                         <p><i class="icon fa fa-ban"></i><?php echo $this->session->flashdata("error");?></p>
+                         <p><i class="icon fa fa-ban"></i><?php echo $this->session->flashdata("error"); ?></p>
 
                      </div>
-                    <?php endif;?>
+                 <?php endif; ?>
 
-                
-                 <form method="POST" action="<?php echo base_url();?>Mantenimiento/Categorias/guardarCategoria" id="categorias" class="form-horizontal form-label-left">
+
+                 <form method="POST" action="<?php echo base_url(); ?>Mantenimiento/Categorias/guardarCategoria" id="categorias" class="form-horizontal form-label-left">
                      <div class="form-group">
                          <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
@@ -56,9 +56,9 @@
                      <div class="form-group">
 
                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                             <button class="btn btn-primary btn-flat" type="reset">Borrar</button> 
-                             <button type="submit" id="guardar" class="btn btn-success">Guardar</button> 
-                            
+                             <button class="btn btn-primary btn-flat" type="reset">Borrar</button>
+                             <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
+
                          </div>
                      </div>
 
@@ -86,8 +86,8 @@
                                              <td><?php echo $categoria->descripcion; ?></td>
                                              <td>
                                                  <div class="btn-group">
-                                                     <button type="button" class="btn btn-info btn-vista" data-toggle="modal" data-target="modal-default" value=" <?php echo $categoria->id_categorias?>"><span class="fa fa-search"></span></button>
-                                                     <a href="<?php echo base_url()?>Mantenimiento/Categorias/editar/<?php echo $categoria->id_categorias;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                     <button type="button" class="btn btn-info btn-vista" data-toggle="modal" data-target="modal-default" value="<?php echo $categoria->id_categorias ?>"><span class="fa fa-search"></span></button>
+                                                     <a href="<?php echo base_url() ?>Mantenimiento/Categorias/editar/<?php echo $categoria->id_categorias; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
                                                      <a href="#" class="btn btn-danger"><span class="fa fa-remove"></span></a>
                                                  </div>
                                              </td>
