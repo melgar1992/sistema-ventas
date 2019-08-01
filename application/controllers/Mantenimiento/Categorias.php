@@ -60,4 +60,13 @@ class Categorias extends BaseController
             redirect(base_url() . "Mantenimiento/categorias/editar".$id_categoria);
         }
     }
+    public function vista ($id_categorias)
+    
+    {
+        $data = array(
+            'categoria' => $this->Categorias_model->getCategoria($id_categorias),
+
+        );
+        $this->loadView('/form/admin/categorias/vista', $data);
+    }
 }

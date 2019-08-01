@@ -1,44 +1,63 @@
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.13
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE la nanda</a>.</strong> All rights
-    reserved.
-  </footer>
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.4.13
+  </div>
+  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE la nanda</a>.</strong> All rights
+  reserved.
+</footer>
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="<?php echo base_url();?>assets/template/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="<?php echo base_url();?>assets/template/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="<?php echo base_url();?>assets/template/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="<?php echo base_url();?>assets/template/fastclick/lib/fastclick.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="<?php echo base_url();?>assets/dist/js/adminlte.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
+<script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 <!-- DataTables-->
-<script src="<?php echo base_url();?>assets/template/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>assets/template/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
+    var base_url = "<?php echo base_url(); ?>";
+    $("btn-vista").on("click", function() {
+      var id_categorias = $(this).val();
+      $.ajax({
+        url: base_url + "Mantenimiento/Categorias/vista" + id_categorias,
+        type : "POST",
+        success: function(resp) {
+          alert(resp);
+        }
+
+
+
+
+      });
+
+
+    });
     $('#example1').DataTable();
     $('.sidebar-menu').tree()
+
   })
 </script>
 
 <!--Formulario de la pagina -->
 <?php
-if (isset($pagina)) {?>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/JavaScript/Js<?php echo $pagina;?>.js"></script>;
-<?php 
+if (isset($pagina)) { ?>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/JavaScript/Js<?php echo $pagina; ?>.js"></script>;
+<?php
 }
 
 ?>
 
 
 </body>
+
 </html>
