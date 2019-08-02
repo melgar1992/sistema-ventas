@@ -70,4 +70,13 @@ class Categorias extends BaseController
         
         $this->load->view("/form/admin/categorias/vista",$data);
     }
+    public function borrar($id_categorias)
+    {
+        $data= array(
+            'estado'=>"0",
+
+        );
+        $this->Categorias_model->actualizar($id_categorias,$data);
+        echo "Mantenimiento/Categorias";
+    }
 }
