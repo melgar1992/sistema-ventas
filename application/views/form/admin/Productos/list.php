@@ -3,7 +3,7 @@
      <!-- Content Header (Page header) -->
      <section class="content-header">
          <h1>
-             Categorias
+             Productos
              <small>Listado</small>
          </h1>
 
@@ -127,8 +127,8 @@
                                              <td>
                                                  <div class="btn-group">
                                                      <button type="button" class="btn btn-info btn-vista" data-toggle="modal" data-target="modal-default" value="<?php echo $productos->id_productos ?>"><span class="fa fa-search"></span></button>
-                                                     <a href="" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                                     <a href="" class="btn btn-danger btn-borrar"><span class="fa fa-remove"></span></a>
+                                                     <a href="<?php echo base_url() ?>Mantenimiento/Productos/editar/<?php echo $productos->id_productos; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                     <a href="<?php echo base_url();?>Mantenimiento/Productos/borrar/<?php echo $productos->id_productos;?>" class="btn btn-danger btn-borrar"><span class="fa fa-remove"></span></a>
                                                  </div>
                                              </td>
                                          </tr>
@@ -157,22 +157,17 @@
 
                      <span aria-hidden="true">&times;</span></button>
 
-                 <h4 class="modal-title">Informacion de la Categoria</h4>
+                 <h4 class="modal-title">Informacion del Producto</h4>
 
              </div>
 
              <div class="modal-body">
-
-
 
              </div>
 
              <div class="modal-footer">
 
                  <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cerrar</button>
-
-
-
              </div>
 
          </div>

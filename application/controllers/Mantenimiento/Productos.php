@@ -15,7 +15,7 @@ class Productos extends BaseController
             'categorias' => $this->Categorias_model->getCategorias(),
         );
 
-        $this->loadView('','/form/admin/productos/list', $data);
+        $this->loadView('Productos','/form/admin/productos/list', $data);
     }
     public function guardarProducto()
     {
@@ -42,51 +42,64 @@ class Productos extends BaseController
             $this->session->set_flashdata("error", "No se pudo guardar la informacion");
         }
 
-        echo $nombre . " " . $descripcion;
+        
     }
-    public function editar($id_categorias)
+    public function editar($id_producto)
     {
         $data = array(
-            'categoria' => $this->Categorias_model->getCategoria($id_categorias),
+            'producto' => $this->Productos_model->getProducto($id_producto),
+            'categorias' => $this->Categorias_model->getCategorias(),
         );
-        $this->loadView('Categorias','/form/admin/categorias/editar', $data);
+        $this->loadView('Productos','/form/admin/productos/editar', $data);
     }
-    public function actualizarCategoria()
+    public function actualizarProducto()
     {
-        $id_categoria = $this->input->post("id_categorias");
+        $id_producto = $this->input->post("id_producto");
+        $codigo = $this->input->post("codigo");
         $nombre = $this->input->post("nombre");
         $descripcion = $this->input->post("descripcion");
+        $precio = $this->input->post("precio");
+        $stock = $this->input->post("stock");
+        $categoria = $this->input->post("categoria");
         $data = array(
+
+            'id_productos' => $id_producto,
+            'id_categorias' => $categoria,
+            'codigo' => $codigo,
             'nombre' => $nombre,
             'descripcion' => $descripcion,
+            'precio' => $precio,
+            'stock' => $stock,
             'estado' => "1"
         );
-        
-        if ($this->Categorias_model->actualizar($id_categoria, $data)) {
-            redirect(base_url() . "Mantenimiento/categorias");
-        }
-        else{
-            $this->session->set_flashdata("error", "No se pudo actualizar la informacion");
-            redirect(base_url() . "Mantenimiento/categorias/editar".$id_categoria);
+
+        if ($this->Productos_model->actualizar($id_producto,$data)) {
+            redirect(base_url() . "Mantenimiento/productos");
+        } else {
+            $this->session->set_flashdata("error", "No se pudo guardar la informacion");
         }
     }
-    public function vista ($id_categorias)
+    public function vista($id_producto)
     
     {
         $data = array(
-            'categoria' => $this->Categorias_model->getCategoria($id_categorias),
+            'producto' => $this->Productos_model->getProducto($id_producto),
 
         );
         
-        $this->load->view("/form/admin/categorias/vista",$data);
+        $this->load->view("/form/admin/Productos/vista",$data);
     }
-    public function borrar($id_categorias)
+    public function borrar($id_producto)
     {
         $data= array(
             'estado'=>"0",
-
         );
-        $this->Categorias_model->actualizar($id_categorias,$data);
-        echo "Mantenimiento/Categorias";
+
+        if ($this->Productos_model->actualizar($id_producto,$data)) {
+            redirect(base_url() . "Mantenimiento/productos");
+        } else {
+            $this->session->set_flashdata("error", "No se pudo guardar la informacion");
+        }
+
     }
 }
