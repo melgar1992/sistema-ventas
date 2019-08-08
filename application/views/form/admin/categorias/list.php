@@ -36,10 +36,11 @@
 
 
                  <form method="POST" action="<?php echo base_url(); ?>Mantenimiento/Categorias/guardarCategoria" id="categorias" class="form-horizontal form-label-left">
-                     <div class="form-group">
+                     <div class="form-group <?php echo !empty(form_error("nombre"))?'has-error':'';?>">
                          <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="nombre" id="nombre" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre de la Categoria">
+                             <input type="text" name="nombre" value="<?php echo set_value("nombre");?>"id="nombre" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre de la Categoria">
+                             <?php echo form_error("nombre","<span class='help-block col-md-4 cols-xs-12 '>","</span>");?>
 
                          </div>
                      </div>
