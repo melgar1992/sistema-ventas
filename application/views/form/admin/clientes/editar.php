@@ -46,10 +46,37 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="apellido" class="control-label col-md-3 col-sm-3 col-xs-12">Apellido <span class="required">*</span></label>
+                        <label for="tipocliente" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Clientes <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="apellidos" id="apellidos" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el apellido" value="<?php echo $cliente->apellidos; ?>">
-
+                            <select name="tipocliente" id="tipocliente" required="required" class="form-group col-md-7 col-xs-12">
+                                <?php foreach ($tipoclientes as $tipocliente) : ?>
+                                    <?php if ($tipocliente->id_tipo_cliente == $cliente->id_tipo_cliente) : ?>
+                                        <option value="<?php echo $tipocliente->id_tipo_cliente; ?>" selected><?php echo $tipocliente->nombre; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?php echo $tipocliente->id_tipo_cliente; ?>"><?php echo $tipocliente->nombre; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipodocumento" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo documento <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="tipodocumento" id="tipodocumento" required="required" class="form-group col-md-7 col-xs-12">
+                                <?php foreach ($tipodocumentos as $tipodocumento) : ?>
+                                    <?php if ($tipodocumento->id_tipo_documento == $cliente->id_tipo_documento) : ?>
+                                        <option value="<?php echo $tipodocumento->id_tipo_documento; ?>" selected><?php echo $tipodocumento->nombre; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?php echo $tipodocumento->id_tipo_documento; ?>"><?php echo $tipodocumento->nombre; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero_documento" class="control-label col-md-3 col-sm-3 col-xs-12">Numero del Documento <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" value="<?php echo $cliente->num_documento; ?>" name="numero_documento" id="numero_documento" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el numero del documento">
                         </div>
                     </div>
                     <div class="form-group">
@@ -66,29 +93,13 @@
 
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nit" class="control-label col-md-3 col-sm-3 col-xs-12">Nit <span class="required">*</span></label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="nit" id="nit" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nit" value="<?php echo $cliente->nit; ?>">
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="empresa" class="control-label col-md-3 col-sm-3 col-xs-12">Empresa <span class="required">*</span></label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="empresa" id="empresa" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nombre de la empresa" value="<?php echo $cliente->empresa; ?>">
-
-                        </div>
-                    </div>
-
-
 
             </div>
 
             <div class="form-group">
 
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                    <button class="btn btn-primary btn-flat" type="reset">Volver</button>
+                <a class="btn btn-primary btn-flat" href="<?php echo site_url("Mantenimiento/Clientes")?>" type="button">Volver</a>
                     <button type="submit" id="editar" class="btn btn-success">Editar</button>
 
                 </div>

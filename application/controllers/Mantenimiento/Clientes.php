@@ -12,6 +12,8 @@ class CLientes extends BaseController
     {
         $data = array(
             'clientes' => $this->Clientes_model->getClientes(),
+            'tipoclientes'=> $this->Clientes_model->getTipoClientes(),
+            'tipodocumentos'=> $this->Clientes_model->getTipoDocumentos(),
         );
 
         $this->loadView('Clientes','/form/admin/clientes/list', $data);
@@ -19,19 +21,21 @@ class CLientes extends BaseController
     public function guardarClientes()
     {
         $nombre = $this->input->post("nombres");
-        $apellido = $this->input->post("apellidos");
+        $id_tipoCliente = $this->input->post("tipocliente");
+        $tipodocumento = $this->input->post("tipodocumento");
+        $numdocumento = $this->input->post("numero_documento");
         $telefono = $this->input->post("telefono");
         $direccion = $this->input->post("direccion");
-        $nit = $this->input->post("nit");
-        $empresa = $this->input->post("empresa");
+        ;
 
         $data = array(
+            
+            'id_tipo_cliente' => $id_tipoCliente,
+            'id_tipo_documento' => $tipodocumento,
             'nombres' => $nombre,
-            'apellidos' => $apellido,
-            'telefono' => $telefono,
+            'telefono'=> $telefono,
             'direccion' => $direccion,
-            'nit' => $nit,
-            'empresa' => $empresa,
+            'num_documento' => $numdocumento,
             'estado' => "1"
         );
 
@@ -49,27 +53,31 @@ class CLientes extends BaseController
     {
         $data = array(
             'cliente' => $this->Clientes_model->getCliente($id_clientes),
+            'tipoclientes'=> $this->Clientes_model->getTipoClientes(),
+            'tipodocumentos'=> $this->Clientes_model->getTipoDocumentos(),
         );
         $this->loadView('Clientes','/form/admin/clientes/editar', $data);
     }
     public function actualizarCliente()
     {
-        $id_clientes = $this->input->post("id_clientes");
+        $id_clientes = $this->input->post('id_clientes');
         $nombre = $this->input->post("nombres");
-        $apellido = $this->input->post("apellidos");
+        $id_tipoCliente = $this->input->post("tipocliente");
+        $tipodocumento = $this->input->post("tipodocumento");
+        $numdocumento = $this->input->post("numero_documento");
         $telefono = $this->input->post("telefono");
         $direccion = $this->input->post("direccion");
-        $nit = $this->input->post("nit");
-        $empresa = $this->input->post("empresa");
-       
+        ;
+
         $data = array(
+            
+            'id_tipo_cliente' => $id_tipoCliente,
+            'id_tipo_documento' => $tipodocumento,
             'nombres' => $nombre,
-            'apellidos' => $apellido,
-            'telefono' => $telefono,
+            'telefono'=> $telefono,
             'direccion' => $direccion,
-            'nit' => $nit,
-            'empresa' => $empresa,
-            'estado' => "1"
+            'num_documento' => $numdocumento,
+            
         );
         
         if ($this->Clientes_model->actualizar($id_clientes, $data)) {

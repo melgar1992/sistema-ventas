@@ -44,10 +44,29 @@
                          </div>
                      </div>
                      <div class="form-group">
-                         <label for="apellido" class="control-label col-md-3 col-sm-3 col-xs-12">Apellido <span class="required">*</span></label>
+                         <label for="tipocliente" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Clientes <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="apellidos" id="apellidos" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el apellido">
-
+                             <select name="tipocliente" id="tipocliente" required="required" class="form-group col-md-7 col-xs-12" >
+                            <?php foreach ($tipoclientes as $tipocliente):?>
+                                <option value="<?php echo $tipocliente->id_tipo_cliente;?>"><?php echo $tipocliente->nombre; ?></option>
+                            <?php endforeach; ?>
+                             </select>
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="tipodocumento" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo documento <span class="required">*</span></label>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <select name="tipodocumento" id="tipodocumento" required="required" class="form-group col-md-7 col-xs-12" >
+                            <?php foreach ($tipodocumentos as $tipodocumento):?>
+                                <option value="<?php echo $tipodocumento->id_tipo_documento;?>"><?php echo $tipodocumento->nombre; ?></option>
+                            <?php endforeach; ?>
+                             </select>
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="numero_documento" class="control-label col-md-3 col-sm-3 col-xs-12">Numero del Documento <span class="required">*</span></label>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <input type="text" name="numero_documento" id="numero_documento" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el numero del documento">
                          </div>
                      </div>
                      <div class="form-group">
@@ -64,20 +83,8 @@
 
                          </div>
                      </div>
-                     <div class="form-group">
-                         <label for="nit" class="control-label col-md-3 col-sm-3 col-xs-12">Nit <span class="required">*</span></label>
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="nit" id="nit" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nit">
-
-                         </div>
-                     </div>
-                     <div class="form-group">
-                         <label for="empresa" class="control-label col-md-3 col-sm-3 col-xs-12">Empresa <span class="required">*</span></label>
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="empresa" id="empresa" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nombre de la empresa">
-
-                         </div>
-                     </div>
+                     
+                     
 
 
 
@@ -102,11 +109,11 @@
                              <tr>
                                  <th>#</th>
                                  <th>Nombres</th>
-                                 <th>Apellidos</th>
-                                 <th>Telefonos</th>
+                                 <th>Tipo Clientes</th>
+                                 <th>Tipo documento</th>
+                                 <th>Numero documento</th>
+                                 <th>Telefono</th>
                                  <th>Direccion</th>
-                                 <th>Nit</th>
-                                 <th>Empresa</th>
                                  <th>Opciones</th>
                              </tr>
                          </thead>
@@ -117,12 +124,11 @@
                                      <tr>
                                          <td><?php echo $cliente->id_clientes; ?></td>
                                          <td><?php echo $cliente->nombres; ?></td>
-                                         <td><?php echo $cliente->apellidos; ?></td>
+                                         <td><?php echo $cliente->tipocliente; ?></td>
+                                         <td><?php echo $cliente->tipodocumento; ?></td>
+                                         <td><?php echo $cliente->num_documento; ?></td>
                                          <td><?php echo $cliente->telefono; ?></td>
                                          <td><?php echo $cliente->direccion; ?></td>
-                                         <td><?php echo $cliente->nit; ?></td>
-                                         <td><?php echo $cliente->empresa; ?></td>
-                                         
                                              
                                          </div>
                                          <td>
@@ -140,6 +146,7 @@
                      </table>
                  </div>
              </div>
+             
              <!-- /.box -->
 
      </section>

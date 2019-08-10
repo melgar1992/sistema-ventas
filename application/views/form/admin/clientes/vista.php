@@ -1,6 +1,6 @@
 <p><strong>Nombre:</strong><?php echo $cliente->nombres;?></p>
-    <p><strong>Descripcion:</strong><?php echo $cliente->apellidos;?></p>
+    <p><strong>Tipo Cliente:</strong><?php echo $cliente->tipocliente;?></p>
+    <p><strong>Tipo de Documento:</strong><?php echo $cliente->tipodocumento;?></p>
+    <p><strong>Numero de Documento:</strong><?php echo $cliente->num_documento;?></p>
     <p><strong>Telefono:</strong><?php echo $cliente->telefono;?></p>
     <p><strong>Direccion:</strong><?php echo $cliente->direccion;?></p>
-    <p><strong>Nit:</strong><?php echo $cliente->nit;?></p>
-    <p><strong>Empresa:</strong><?php echo $cliente->empresa;?></p>
