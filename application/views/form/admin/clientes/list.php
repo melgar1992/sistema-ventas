@@ -36,37 +36,45 @@
 
 
                  <form method="POST" action="<?php echo base_url(); ?>Mantenimiento/Clientes/guardarClientes" id="clientes" class="form-horizontal form-label-left">
-                     <div class="form-group">
-                         <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
+                     <div class="form-group <?php echo form_error("nombres") != false ? 'has-error': '';?>">
+                         <label for="nombres" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="nombres" id="nombres" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nombre">
+                             <input type="text" value="<?php echo set_value('nombres'); ?>" name="nombres" id="nombres" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nombre">
+                             <?php echo form_error('nombres', "<span class= 'help-block'>", '</span>'); ?>
+                         </div>
+                     </div>
+                     <div class="form-group <?php echo form_error("tipocliente") != false ? 'has-error': '';?>">
+                         <label for="tipocliente" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Clientes <span class="required">*</span></label>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <select name="tipocliente" id="tipocliente" required="required" class="form-group col-md-7 col-xs-12">
+                                 <option value="">Seleccione...</option>
+                                 <?php foreach ($tipoclientes as $tipocliente) : ?>
+                                     <option value="<?php echo $tipocliente->id_tipo_cliente; ?>" <?php echo set_select("tipocliente",$tipocliente->id_tipo_cliente);?>><?php echo $tipocliente->nombre; ?></option>
+                                 <?php endforeach; ?>
+                             </select>
+                             <?php echo form_error('tipocliente', "<span class= 'help-block'>", '</span>'); ?>
 
                          </div>
                      </div>
-                     <div class="form-group">
-                         <label for="tipocliente" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Clientes <span class="required">*</span></label>
-                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <select name="tipocliente" id="tipocliente" required="required" class="form-group col-md-7 col-xs-12" >
-                            <?php foreach ($tipoclientes as $tipocliente):?>
-                                <option value="<?php echo $tipocliente->id_tipo_cliente;?>"><?php echo $tipocliente->nombre; ?></option>
-                            <?php endforeach; ?>
-                             </select>
-                         </div>
-                     </div>
-                     <div class="form-group">
+                     <div class="form-group <?php echo form_error("tipodocumento") != false ? 'has-error': '';?>">
                          <label for="tipodocumento" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo documento <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <select name="tipodocumento" id="tipodocumento" required="required" class="form-group col-md-7 col-xs-12" >
-                            <?php foreach ($tipodocumentos as $tipodocumento):?>
-                                <option value="<?php echo $tipodocumento->id_tipo_documento;?>"><?php echo $tipodocumento->nombre; ?></option>
-                            <?php endforeach; ?>
+                             <select name="tipodocumento" id="tipodocumento" required="required" class="form-group col-md-7 col-xs-12">
+                             <option value="">Seleccione...</option>
+                                 <?php foreach ($tipodocumentos as $tipodocumento) : ?>
+                                     <option value="<?php echo $tipodocumento->id_tipo_documento; ?>" <?php echo set_select("tipodocumento",$tipodocumento->id_tipo_documento);?>><?php echo $tipodocumento->nombre; ?></option>
+                                 <?php endforeach; ?>
                              </select>
+                             <?php echo form_error('tipodocumento', "<span class= 'help-block'>", '</span>'); ?>
+
                          </div>
                      </div>
-                     <div class="form-group">
+                     <div class="form-group <?php echo form_error("numero_documento") != false ? 'has-error': '';?>">
                          <label for="numero_documento" class="control-label col-md-3 col-sm-3 col-xs-12">Numero del Documento <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="text" name="numero_documento" id="numero_documento" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el numero del documento">
+                             <input type="text" value="<?php echo set_value('numero_documento'); ?>" name="numero_documento" id="numero_documento" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el numero del documento">
+                             <?php echo form_error('numero_documento', "<span class= 'help-block'>", '</span>'); ?>
+
                          </div>
                      </div>
                      <div class="form-group">
@@ -83,8 +91,8 @@
 
                          </div>
                      </div>
-                     
-                     
+
+
 
 
 
@@ -129,25 +137,25 @@
                                          <td><?php echo $cliente->num_documento; ?></td>
                                          <td><?php echo $cliente->telefono; ?></td>
                                          <td><?php echo $cliente->direccion; ?></td>
-                                             
-                                         </div>
-                                         <td>
-                                             <div class="btn-group">
-                                                 <button type="button" class="btn btn-info btn-vista-cliente" data-toggle="modal" data-target="modal-default" value="<?php echo $cliente->id_clientes ?>"><span class="fa fa-search"></span></button>
-                                                 <a href="<?php echo base_url() ?>Mantenimiento/Clientes/editar/<?php echo $cliente->id_clientes; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                                 <a href="<?php echo base_url(); ?>Mantenimiento/Clientes/borrar/<?php echo $cliente->id_clientes; ?>" class="btn btn-danger btn-borrar"><span class="fa fa-remove"></span></a>
-                                             </div>
-                                         </td>
-                                     </tr>
-                                 <?php endforeach; ?>
-                             <?php endif; ?>
 
-                         </tbody>
-                     </table>
-                 </div>
+                         </div>
+                         <td>
+                             <div class="btn-group">
+                                 <button type="button" class="btn btn-info btn-vista-cliente" data-toggle="modal" data-target="modal-default" value="<?php echo $cliente->id_clientes ?>"><span class="fa fa-search"></span></button>
+                                 <a href="<?php echo base_url() ?>Mantenimiento/Clientes/editar/<?php echo $cliente->id_clientes; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                 <a href="<?php echo base_url(); ?>Mantenimiento/Clientes/borrar/<?php echo $cliente->id_clientes; ?>" class="btn btn-danger btn-borrar"><span class="fa fa-remove"></span></a>
+                             </div>
+                         </td>
+                         </tr>
+                     <?php endforeach; ?>
+                 <?php endif; ?>
+
+                 </tbody>
+                 </table>
              </div>
-             
-             <!-- /.box -->
+         </div>
+
+         <!-- /.box -->
 
      </section>
      <!-- /.content -->

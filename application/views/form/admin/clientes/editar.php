@@ -38,45 +38,55 @@
                 <form method="POST" action="<?php echo base_url(); ?>Mantenimiento/Clientes/actualizarCliente" id="clientes" class="form-horizontal form-label-left">
                     <input type="hidden" name="id_clientes" value="<?php echo $cliente->id_clientes; ?>">
 
-                    <div class="form-group">
-                        <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
+                    <div class="form-group <?php echo form_error("nombres") != false ? 'has-error' : ''; ?>">
+                        <label for="nombres" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="nombres" id="nombres" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el nombre" value="<?php echo $cliente->nombres; ?>">
-
+                            <input type="text" value="<?php echo form_error('nombres') != false ? set_value('nombres') : $cliente->nombres; ?>" name="nombres" id="nombres"  class="form-group col-md-7 col-xs-12" placeholder="Escriba el nombre">
+                            <?php echo form_error('nombres', "<span class= 'help-block'>", '</span>'); ?>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group <?php echo form_error("tipocliente") != false ? 'has-error' : ''; ?>">
                         <label for="tipocliente" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Clientes <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <select name="tipocliente" id="tipocliente" required="required" class="form-group col-md-7 col-xs-12">
-                                <?php foreach ($tipoclientes as $tipocliente) : ?>
-                                    <?php if ($tipocliente->id_tipo_cliente == $cliente->id_tipo_cliente) : ?>
-                                        <option value="<?php echo $tipocliente->id_tipo_cliente; ?>" selected><?php echo $tipocliente->nombre; ?></option>
-                                    <?php else : ?>
-                                        <option value="<?php echo $tipocliente->id_tipo_cliente; ?>"><?php echo $tipocliente->nombre; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                <?php if (form_error("tipocliente") != false || set_value("tipocliente" != false)) : ?>
+                                    <?php foreach ($tipoclientes as $tipocliente) : ?>
+                                        <option value="<?php echo $tipocliente->id_tipo_cliente; ?>" <?php echo set_select("tipocliente", $tipocliente->id_tipo_cliente); ?>><?php echo $tipocliente->nombre; ?></option>
+                                    <?php endforeach; ?>
+                                <?php else : ?>
+                                    <?php foreach ($tipoclientes as $tipocliente) : ?>
+                                        <option value="<?php echo $tipocliente->id_tipo_cliente; ?>" <?php echo $tipocliente->id_tipo_cliente == $cliente->id_tipo_cliente ? 'selected' : ''; ?>><?php echo $tipocliente->nombre; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </select>
+                            <?php echo form_error('tipocliente', "<span class= 'help-block'>", '</span>'); ?>
+
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group <?php echo form_error("tipodocumento") != false ? 'has-error' : ''; ?>">
                         <label for="tipodocumento" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo documento <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <select name="tipodocumento" id="tipodocumento" required="required" class="form-group col-md-7 col-xs-12">
-                                <?php foreach ($tipodocumentos as $tipodocumento) : ?>
-                                    <?php if ($tipodocumento->id_tipo_documento == $cliente->id_tipo_documento) : ?>
-                                        <option value="<?php echo $tipodocumento->id_tipo_documento; ?>" selected><?php echo $tipodocumento->nombre; ?></option>
-                                    <?php else : ?>
-                                        <option value="<?php echo $tipodocumento->id_tipo_documento; ?>"><?php echo $tipodocumento->nombre; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                <?php if (form_error("tipodocumento") != false || set_value("tipodocumento" != false)) : ?>
+                                    <?php foreach ($tipodocumentos as $tipodocumento) : ?>
+                                        <option value="<?php echo $tipodocumento->id_tipo_documento; ?>" <?php echo set_select("tipodocumento", $tipodocumento->id_tipo_documento); ?>><?php echo $tipodocumento->nombre; ?></option>
+                                    <?php endforeach; ?>
+                                <?php else : ?>
+                                    <?php foreach ($tipodocumentos as $tipodocumento) : ?>
+                                        <option value="<?php echo $tipodocumento->id_tipo_documento; ?>" <?php echo $tipodocumento->id_tipo_documento == $cliente->id_tipo_documento ? 'selected' : ''; ?>><?php echo $tipodocumento->nombre; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </select>
+                            <?php echo form_error('tipodocumento', "<span class= 'help-block'>", '</span>'); ?>
+
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group <?php echo form_error("numero_documento") != false ? 'has-error' : ''; ?>">
                         <label for="numero_documento" class="control-label col-md-3 col-sm-3 col-xs-12">Numero del Documento <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" value="<?php echo $cliente->num_documento; ?>" name="numero_documento" id="numero_documento" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el numero del documento">
+                            <input type="text" value="<?php echo form_error('numero_documento') != false ? set_value('numero_documento') : $cliente->num_documento; ?>" name="numero_documento" id="numero_documento" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba el numero del documento">
+                            <?php echo form_error('numero_documento', "<span class= 'help-block'>", '</span>'); ?>
+
                         </div>
                     </div>
                     <div class="form-group">
@@ -99,7 +109,7 @@
             <div class="form-group">
 
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <a class="btn btn-primary btn-flat" href="<?php echo site_url("Mantenimiento/Clientes")?>" type="button">Volver</a>
+                    <a class="btn btn-primary btn-flat" href="<?php echo site_url("Mantenimiento/Clientes") ?>" type="button">Volver</a>
                     <button type="submit" id="editar" class="btn btn-success">Editar</button>
 
                 </div>
