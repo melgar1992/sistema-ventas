@@ -21,9 +21,7 @@
                                     <label for="">Comprobante:</label>
                                     <select name="comprobantes" id="comprobantes" class="form-control" required>
                                     <option value="">Seleccione...</option>
-                                        <?php foreach ($tipocomprobantes as $tipocomprobante):
-                                            ?>
-
+                                        <?php foreach ($tipocomprobantes as $tipocomprobante):?>
                                         <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie; ?>
                                     <option value="<?php echo $datacomprobante;?>">
                                     <?php echo $tipocomprobante->nombre?></option>
@@ -34,7 +32,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="">Serie:</label>
-                                    <input type="text" class="form-control" name="serie" readonly>
+                                    <input type="text" id="serie" class="form-control" name="serie" readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="">Numero:</label>

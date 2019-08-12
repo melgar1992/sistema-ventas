@@ -25,17 +25,17 @@
                 </div>
             </div>
             <div class="box-body">
-            <div class="form-group">
-                <a href="<?php echo base_url(); ?>Movimientos/Ventas/add">
+                <div class="form-group">
+                    <a href="<?php echo base_url(); ?>Movimientos/Ventas/add">
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 
                         <button type="submit" id="agregar" class="btn btn-success">Agregar ventas</button>
-                </a>
-                
-            </div>
+                    </a>
 
-            
+                </div>
+
+
 
             </div>
         </div>
