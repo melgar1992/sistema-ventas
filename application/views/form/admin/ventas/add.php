@@ -20,12 +20,12 @@
                                 <div class="col-md-3">
                                     <label for="">Comprobante:</label>
                                     <select name="comprobantes" id="comprobantes" class="form-control" required>
-                                    <option value="">Seleccione...</option>
-                                        <?php foreach ($tipocomprobantes as $tipocomprobante):?>
-                                        <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie; ?>
-                                    <option value="<?php echo $datacomprobante;?>">
-                                    <?php echo $tipocomprobante->nombre?></option>
-                                        <?php endforeach;?>
+                                        <option value="">Seleccione...</option>
+                                        <?php foreach ($tipocomprobantes as $tipocomprobante) : ?>
+                                            <?php $datacomprobante = $tipocomprobante->id_tipo_comprobante . "*" . $tipocomprobante->cantidad . "*" . $tipocomprobante->igv . "*" . $tipocomprobante->serie; ?>
+                                            <option value="<?php echo $datacomprobante; ?>">
+                                                <?php echo $tipocomprobante->nombre ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <input type="hidden" id="idcomprobante" name="idcomprobante">
                                     <input type="hidden" id="igv">
@@ -148,9 +148,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if (!empty($clientes)) : ?>
+                            <?php foreach ($clientes as $cliente) : ?>
+                                <tr>
+                                    <td><?php echo $cliente->id_clientes; ?></td>
+                                    <td><?php echo $cliente->nombres; ?></td>
+                                    <td><?php echo $cliente->num_documento; ?></td>
+                                    <?php $dataCliente = $cliente->id_clientes . "*" . $cliente->nombres . "*" . $cliente->tipocliente . "*" . $cliente->tipodocumento . "*" . $cliente->num_documento . "*" . $cliente->telefono . "*" . $cliente->direccion; ?>
+
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-check" value="<?php echo $dataCliente ?>"><span class="fa fa-check"></span></button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
                     </tbody>
                 </table>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cerrar</button>

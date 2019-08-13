@@ -25,10 +25,18 @@ class Ventas extends BaseController
     public function add()
     {
       $data=array(
-        "tipocomprobantes"=>$this->Ventas_model->getComprobantes()
+        "tipocomprobantes"=>$this->Ventas_model->getComprobantes(),
+        "clientes"=> $this->Clientes_model->getClientes(),
       );
         $this->loadView('Ventas', '/form/admin/ventas/add',$data);
         
+    }
+    public function getProductos()
+    {
+        $valor = $this->input->post("valor");
+        $productos = $this->Ventas_model->getProductos($valor);
+        echo json_encode($productos);
+
     }
     
 
