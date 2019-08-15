@@ -18,6 +18,7 @@ $(document).ready(function () {
             $('#numero').val(null);
 
         }
+        sumar();
 
     })
 
@@ -47,9 +48,58 @@ $(document).ready(function () {
             $("#btn-agregar").val(data);
         },
     });
+    $("#btn-agregar").on("click",function () {
+        data = $(this).val();
+        if (data != '') {
+            infoproducto = data.split("*");
+            html = "<tr>";
+            html += "<td><input type='hidden' name= 'idproductos[]' value ='"+infoproducto[0]+"'>"+infoproducto[1]+"</td>";
+            html += "<td>"+infoproducto[2]+"</td>";
+            html += "<td><input type='hidden' name = 'precios[]' value ='"+infoproducto[3]+"'>"+infoproducto[3]+"</td>";
+            html += "<td>"+infoproducto[4]+"</td>";
+            html += "<td><input type = 'number' class='cantidades' name = 'cantidades[]' value = '1'></td>";
+            html += "<td><input type ='hidden' name = 'importes[]' value ='"+infoproducto[3]+"'><p>"+infoproducto[3]+"</p></td>";
+            html += "<td><button type='button' class='btn btn-danger btn-remove-producto'><span class='fa fa-remove'></span></button></td>";
+            html += "</tr>";
+            $("#tbventas tbody").append(html);
+            sumar();
+            $("#btn-agregar").val(null);
+            $("#producto").val(null);
+        }else{
+            alert("seleccione un producto");
+        }
+    });
+    $(document).on("click",".btn-remove-producto",function () {
+        
+        $(this).closest("tr").remove();
+        sumar();
+    });
+    $(document).on("keyup","#tbventas input.cantidades",function () {
+        
+        
+        cantidad = $(this).val();
+        precio = $(this).closest("tr").find("td:eq(2)").text();
+        importe = cantidad * precio;
+        $(this).closest("tr").find("td:eq(5)").children("p").text(importe.toFixed(2));
+        $(this).closest("tr").find("td:eq(5)").children("input").val(importe.toFixed(2));
+        sumar();
+    });
 
 })
 
+function sumar() {
+    subtotal = 0;
+    $("#tbventas  tbody tr").each(function(){
+        subtotal =  subtotal + Number($(this).find("td:eq(5)").text());
+    });
+    $("input[name=subtotal]").val(subtotal.toFixed(2));
+    porcentaje = $("#igv").val();
+    igv = subtotal * (porcentaje/100);
+    $("input[name=igv]").val(igv.toFixed(2));
+    descuento = $("input[name=descuento]").val();
+    total = subtotal + igv - descuento;
+    $("input[name=total]").val(total.toFixed(2));
+}
 
 function generarNumero(numero) {
     if (numero >= 99999 && numero < 999999) {
