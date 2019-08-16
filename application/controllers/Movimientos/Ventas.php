@@ -111,7 +111,11 @@ class Ventas extends BaseController
      public function vista()
      {
          $id_venta = $this->input->post('id');
-         $this->load->view('form/admin/ventas/view');
+         $data=array(
+             "venta"=>$this->Ventas_model->getVenta($id_venta),
+             "detalles"=> $this->Ventas_model->getDetalle($id_venta),
+         );
+         $this->load->view('form/admin/ventas/view', $data);
 
      }
 }

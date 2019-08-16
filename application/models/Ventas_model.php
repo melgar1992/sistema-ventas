@@ -17,6 +17,26 @@ class Ventas_model extends CI_Model
             return false;
         }
     }
+    public function getVenta($id)
+    {
+        $this->db->select('v.*, c.nombres, c.direccion, c.telefono, c.num_documento as documento, tc.nombre as tipocomprobante');
+        $this->db->from('ventas v');
+        $this->db->join('clientes c','v.id_clientes = c.id_clientes');
+        $this->db->join('tipo_comprobante tc','v.id_tipo_comprobante = tc.id_tipo_comprobante');
+        $this->db->where("v.id_ventas",$id);
+        $resultado= $this->db->get();
+        return $resultado->row();
+    }
+    public function getDetalle($id)
+    {
+        $this->db->select('dt.*, p.codigo, p.nombre ');
+        $this->db->from('detalle_ventas dt');
+        $this->db->join('productos p','dt.id_productos=p.id_productos');
+        $this->db->where("dt.id_ventas",$id);
+        $resultados=$this->db->get();
+        return $resultados->result();
+        
+    }
     public function getComprobantes()
     {
         $resultados=$this->db->get("tipo_comprobante");

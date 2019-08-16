@@ -10,17 +10,17 @@
 <div class="row">
 	<div class="col-xs-6">	
 		<b>CLIENTE</b><br>
-		<b>Nombre:</b> Yony Brondy <br>
-		<b>Nro Documento:</b> 45454546<br>
-		<b>Telefono:</b> 454545 <br>
-		<b>Direccion</b> Ilo,miramar<br>
+		<b>Nombre:</b> <?php echo $venta->nombres?> <br>
+		<b>Nro Documento:</b> <?php echo $venta->documento?> <br>
+		<b>Telefono:</b> <?php echo $venta->telefono?> <br>
+		<b>Direccion</b> <?php echo $venta->direccion?> <br>
 	</div>	
 	<div class="col-xs-6">	
 		<b>COMPROBANTE</b> <br>
-		<b>Tipo de Comprobante:</b> Boleta<br>
-		<b>Serie:</b> 001<br>
-		<b>Nro de Comprobante:</b> 000001<br>
-		<b>Fecha</b> 17/12/1990
+		<b>Tipo de Comprobante:</b><?php echo $venta->tipocomprobante?><br>
+		<b>Serie:</b> <?php echo $venta->serie?><br>
+		<b>Nro de Comprobante:</b> <?php echo $venta->num_documento?><br>
+		<b>Fecha</b> <?php echo $venta->fecha?>
 	</div>	
 </div>
 <br>
@@ -37,31 +37,33 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php foreach ($detalles as $detalle):?>
 				<tr>
-					<td>0001</td>
-					<td>Coca Cola de 2.5L</td>
-					<td>6.50</td>
-					<td>10</td>
-					<td>65.00</td>
+					<td><?php echo $detalle->codigo;?></td>
+					<td><?php echo $detalle->nombre;?></td>
+					<td><?php echo $detalle->precio;?></td>
+					<td><?php echo $detalle->cantidad;?></td>
+					<td><?php echo $detalle->importe;?></td>
 				</tr>
+				<?php endforeach; ?>
 				
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="4" class="text-right"><strong>Subtotal:</strong></td>
-					<td>65.00</td>
+					<td><?php echo $venta->subtotal?></td>
 				</tr>
 				<tr>
 					<td colspan="4" class="text-right"><strong>IGV:</strong></td>
-					<td>11.70</td>
+					<td><?php echo $venta->igv?></td>
 				</tr>
 				<tr>
 					<td colspan="4" class="text-right"><strong>Descuento:</strong></td>
-					<td>0.00</td>
+					<td><?php echo $venta->descuento?></td>
 				</tr>
 				<tr>
 					<td colspan="4" class="text-right"><strong>Total:</strong></td>
-					<td>76.70</td>
+					<td><?php echo $venta->total?></td>
 				</tr>
 			</tfoot>
 		</table>
