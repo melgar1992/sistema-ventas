@@ -1,6 +1,22 @@
 <?php
 class Ventas_model extends CI_Model
 {
+    public function getVentas()
+    {
+        $this->db->select('v.*, c.nombres, tc.nombre as tipocomprobante');
+        $this->db->from('ventas v');
+        $this->db->join('clientes c','v.id_clientes = c.id_clientes');
+        $this->db->join('tipo_comprobante tc','v.id_tipo_comprobante = tc.id_tipo_comprobante');
+        $resultado = $this->db->get();
+
+        if ($resultado->num_rows() > 0) {
+
+            return $resultado->result();
+
+        }else {
+            return false;
+        }
+    }
     public function getComprobantes()
     {
         $resultados=$this->db->get("tipo_comprobante");

@@ -84,6 +84,19 @@ $(document).ready(function () {
         $(this).closest("tr").find("td:eq(5)").children("input").val(importe.toFixed(2));
         sumar();
     });
+    $(document).on('click', '.btn-view-venta', function () {
+       valor_id = $(this).val();
+       $.ajax({
+           url: base_url + 'Movimientos/Ventas/vista',
+           type: 'POST',
+           dataType: 'html',
+           data:{id:valor_id},
+           success: function (data) {
+             
+            $('#modal-default .modal-body').html(data);
+           }
+       }); 
+    });
 
 })
 

@@ -13,13 +13,12 @@ class Ventas extends BaseController
     public function index()
     {
         $data = array(
-            'clientes' => $this->Clientes_model->getClientes(),
-            'tipoclientes' => $this->Clientes_model->getTipoClientes(),
-            'tipodocumentos' => $this->Clientes_model->getTipoDocumentos(),
+            'ventas' => $this->Ventas_model->getVentas(),
+            
         );
 
 
-        $this->loadView('Ventas', '/form/admin/ventas/list', $data);
+        $this->loadView('Ventas','/form/admin/ventas/list', $data);
     }
 
     public function add()
@@ -108,5 +107,11 @@ class Ventas extends BaseController
              'stock' => $productoActual->stock - $cantidad,
              );
         $this->Productos_model->actualizar($idproducto,$data);
+     }
+     public function vista()
+     {
+         $id_venta = $this->input->post('id');
+         $this->load->view('form/admin/ventas/view');
+
      }
 }
