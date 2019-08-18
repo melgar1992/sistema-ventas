@@ -20,6 +20,8 @@ if (!$this->session->userdata('login')) {
   <link rel="stylesheet" href="<?php echo base_url();?>assets/template/jquery-ui/jquery-ui.css">
   <!-- Jquery css-->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/AdminLTE.min.css">
+  <!-- Data Tables export -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/template/datatables-export/css/buttons.dataTables.min.css">
   <!-- DataTables-->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/template/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins

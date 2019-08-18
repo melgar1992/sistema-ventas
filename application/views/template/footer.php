@@ -22,13 +22,32 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
+<!-- Jquery Print, sirve para imprimir -->
+<script src="<?php echo base_url(); ?>assets/template/jquery-print/jquery.print.js"></script>
 <!-- DataTables-->
 <script src="<?php echo base_url(); ?>assets/template/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- Data Tables export -->
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/buttons.flash.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/jszip.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/pdfmake.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/datatables-export/js/vfs_fonts.js"></script>
+
 <input type="hidden" value="<?php echo base_url() ?>" id="base_url">
 <script>
   $('#example1').DataTable();
     $('.sidebar-menu').tree();
+</script>
+<script>
+   $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
 </script>
 
 <!--Formulario de la pagina -->
