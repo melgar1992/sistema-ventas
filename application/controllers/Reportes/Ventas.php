@@ -12,8 +12,20 @@ class Ventas extends BaseController
 
     public function index()
     {
+        $fechainicio=$this->input->post("fechaincio");
+        $fechafin=$this->input->post("fechafin");
+        if ($this->input->post("buscar")) {
+           $ventas=$this->Ventas_model->getVentasporFecha($fechainicio,$fechafin);
+
+        }
+        else{
+            $ventas=$this->Ventas_model->getVentas();
+        }
+       
+    
+
         $data = array(
-            'ventas' => $this->Ventas_model->getVentas(),
+            'ventas' => $ventas,
          );
 
         $this->loadView("ReportesVentas","/form/admin/reportes/Ventas",$data);

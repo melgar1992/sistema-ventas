@@ -19,6 +19,26 @@
 
                
                 <div class="row">
+                    <form action="<?php echo current_url();?>" method="POST" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="" class="col-md-1 control-label">Desde: </label>
+                            <div class="col-md-3">
+                                <input type="date" class="form-control" name="fechainicio">
+
+                            </div>
+                            <label for="" class="col-md-1 control-label">Hasta: </label>
+                            <div class="col-md-3">
+                                <input type="date" class="form-control" name="fechafin">
+
+                            </div class="col-md-4">
+                            <input type="submit" name="buscar" value="Buscar" class="btn btn-primary">
+                            <a href="<?php echo base_url(); ?>reporte/ventas" class="btn btn-danger">Restablecer</a>
+                            <div>
+
+                            </div>
+
+
+                        </div>
                     <div class="col-md-12">
                         <table id="example" class="table table-bordered btn-hover">
                             <thead>

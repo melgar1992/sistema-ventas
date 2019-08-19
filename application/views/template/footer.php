@@ -42,12 +42,8 @@
     $('.sidebar-menu').tree();
 </script>
 <script>
-   $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
+  
+    
 </script>
 
 <!--Formulario de la pagina -->
