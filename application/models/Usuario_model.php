@@ -17,6 +17,20 @@ public function login($username, $password)
     }
     
 }
+public function getUsuarios()
+{
+        $this->db->select("u.*, r.nombres as roles");
+        $this->db->from("usuarios u");
+        $this->db->join("roles r", "u.id_roles = r.id_roles");
+        $this->db->where("u.estado", "1");
+        $resultados = $this->db->get();
+        return $resultados->result();
+}
+public function getRoles()
+{
+    $resultados= $this->db->get("roles");
+    return $resultados->result();
+}
 
 
     

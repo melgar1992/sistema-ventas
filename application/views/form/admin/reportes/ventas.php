@@ -23,12 +23,12 @@
                         <div class="form-group">
                             <label for="" class="col-md-1 control-label">Desde: </label>
                             <div class="col-md-3">
-                                <input type="date" class="form-control" name="fechainicio">
+                                <input type="date" class="form-control" name="fechainicio" value="<?php echo !empty($fechainicio) ? $fechainicio:''; ?>">
 
                             </div>
                             <label for="" class="col-md-1 control-label">Hasta: </label>
                             <div class="col-md-3">
-                                <input type="date" class="form-control" name="fechafin">
+                                <input type="date" class="form-control" name="fechafin" value="<?php echo !empty($fechafin) ? $fechafin:''; ?>">
 
                             </div class="col-md-4">
                             <input type="submit" name="buscar" value="Buscar" class="btn btn-primary">

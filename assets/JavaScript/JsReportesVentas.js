@@ -4,7 +4,7 @@ $('#example').DataTable({
             extend: 'excelHtml5',
             title: "Lista Ventas",
             exportOptions: {
-                colums: [0, 1, 2, 3, 4, 5],
+                columns: [0, 1, 2, 3, 4, 5],
             }
 
         },
@@ -12,8 +12,8 @@ $('#example').DataTable({
             extend: 'pdfHtml5',
             title: "Listado Ventas",
             exportOptions: {
-                colums: [0, 1, 2, 3, 4, 5],
+                columns: [0, 1, 2, 3, 4, 5],
             }
-        },
+        }
     ],
 });
