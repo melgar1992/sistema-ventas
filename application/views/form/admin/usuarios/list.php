@@ -35,8 +35,9 @@
                   <?php endif; ?>
 
 
-                  <form method="POST" action="<?php echo base_url(); ?>Administrador/Usuarios/guardarUsuarios" id="categorias" class="form-horizontal form-label-left">
-                      <div class="form-group <?php echo !empty(form_error("nombre")) ? 'has-error' : ''; ?>">
+                  <form method="POST" action="<?php echo base_url(); ?>Administrador/Usuarios/guardarUsuarios" id="usuarios" class="form-horizontal form-label-left">
+                      
+                  <div class="form-group <?php echo !empty(form_error("nombre")) ? 'has-error' : ''; ?>">
                           <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span></label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
                               <input type="text" name="nombre" value="<?php echo set_value("nombre"); ?>" id="nombre" required="required" class="form-group col-md-7 col-xs-12" placeholder="Nombre del Usuario">
@@ -76,15 +77,17 @@
                       <div class="form-group">
                           <label for="password" class="control-label col-md-3 col-sm-3 col-xs-12">Contraseña <span class="required">*</span></label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="password" id="password" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba la contraseña">
+                              <input type="password" name="password" id="password" required="required" class="form-group col-md-7 col-xs-12" placeholder="Escriba la contraseña">
 
                           </div>
                       </div>
                       <div class="form-group">
                           <label for="roles" class="control-label col-md-3 col-sm-3 col-xs-12">Roles <span class="required">*</span></label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select name="roles" id="roles" required="required" class="form-group col-md-7 col-xs-12" >
-
+                              <select name="roles" id="roles" required="required" class="form-group col-md-7 col-xs-12">
+                                  <?php foreach ($roles as $rol) : ?>
+                                  <option value="<?php echo $rol->id_roles; ?>"><?php echo $rol->nombres; ?></option>
+                                  <?php endforeach; ?>
                               </select>
 
                           </div>
@@ -134,7 +137,7 @@
 
                                       <td>
                                           <div class="btn-group">
-                                              <button type="button" class="btn btn-info btn-vista" data-toggle="modal" data-target="modal-default" value="<?php echo $usuario->id_usuarios ?>"><span class="fa fa-search"></span></button>
+                                              <button type="button" class="btn btn-info btn-vista-usuario" data-toggle="modal" data-target="#modal-default" value="<?php echo $usuario->id_usuarios ?>"><span class="fa fa-search"></span></button>
                                               <a href="<?php echo base_url() ?>Administrador/Usuarios/editar/<?php echo $usuario->id_usuarios; ?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
                                               <a href="<?php echo base_url(); ?>Administrador/Usuarios/borrar/<?php echo $usuario->id_usuarios; ?>" class="btn btn-danger btn-borrar"><span class="fa fa-remove"></span></a>
                                           </div>
@@ -165,7 +168,7 @@
 
                       <span aria-hidden="true">&times;</span></button>
 
-                  <h4 class="modal-title">Informacion de la Categoria</h4>
+                  <h4 class="modal-title">Informacion del Usuario</h4>
 
               </div>
 
