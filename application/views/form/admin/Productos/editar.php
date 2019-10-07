@@ -78,7 +78,7 @@
                         <label for="categoria" class="control-label col-md-3 col-sm-3 col-xs-12">categoria <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <select name="categoria" id="categoria" required="required" class="form-group col-md-7 col-xs-12">
-                                <?php foreach ($categorias as $categoria) : ?>
+                            <?php foreach ($categorias as $categoria) : ?>
                                     <?php if ($categoria->id_categorias == $producto->id_categorias) : ?>
                                         <option value="<?php echo $categoria->id_categorias; ?>" selected><?php echo $categoria->nombre; ?></option>
                                     <?php else : ?>

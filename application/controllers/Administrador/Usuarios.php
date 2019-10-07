@@ -35,7 +35,7 @@ class Usuarios extends BaseController
             'telefono' => $telefono,
             'email' => $email,
             'username' => $username,
-            'password' => $password,
+            'password' => sha1($password),
             'estado' => "1"
         );
         if ($this->Usuario_model->guardar($data)) {
@@ -71,7 +71,6 @@ class Usuarios extends BaseController
         $telefono = $this->input->post("telefono");
         $email = $this->input->post("email");
         $username = $this->input->post("username");
-        $password = $this->input->post("password");
         $roles = $this->input->post("roles");
 
 
@@ -83,7 +82,7 @@ class Usuarios extends BaseController
             'telefono' => $telefono,
             'email' => $email,
             'username' => $username,
-            'password' => $password,
+            
 
         );
         if ($this->Usuario_model->actualizar($idusuario, $data)) {
